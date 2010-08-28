@@ -44,4 +44,21 @@ Infer is broad and covers, or intends to cover, most of what you'll find in stat
 
 - *features*:  easy to deal with feature representations as a matrix, a Clojure vector of vectors, or nested maps, and transforming between the options.  easy dealing with continuous or discrete, or discretizing continuous variables (currently in *classification*).  merging equivalence classes.
 
+
+## Running test suite
+
+To run tests for Infer, you first have to make Leiningen pull down dependencies:
+
+    $ lein deps
+
+then compile Java sources with
+
+    $ lein javac
+
+and run test suite with
+
+    $ lein test
+
+## License
+
 - Copyright (c) Bradford Cross and Hamilton Ulmer released under the MIT License (http://www.opensource.org/licenses/mit-license.php).
