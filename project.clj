@@ -10,4 +10,5 @@
                  [incanter/parallelcolt "0.9.4"]]
   :dev-dependencies [[org.clojars.mmcgrana/lein-javac "0.1.0"]
                      [swank-clojure "1.2.0"]
-                     [lein-clojars "0.5.0"]])
+                     [lein-clojars "0.5.0"]]
+  :jvm-opts ["-Xmx1g"])
