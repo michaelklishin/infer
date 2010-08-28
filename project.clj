@@ -28,9 +28,10 @@
         [leiningen.javac :only (javac extract-javac-tasks)]
         robert.hooke))
 
-(defn compile-java-before-running-tests-hook [task & args]
+(defn java-compilation-hook [task & args]
   (println "About to compile Java sources")
   (apply javac args)
   (apply task args))
 
-(add-hook #'leiningen.test/test compile-java-before-running-tests-hook)
+(add-hook #'leiningen.test/test java-compilation-hook)
+(add-hook #'leiningen.repl/repl java-compilation-hook)
