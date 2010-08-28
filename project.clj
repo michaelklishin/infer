@@ -13,3 +13,24 @@
                      [lein-clojars "0.5.0"]]
   :java-source-path [["src/jvm"]]
   :jvm-opts ["-Xmx1g"])
+
+
+;;
+;; Hooks
+;;
+
+;; this is necessary as long as leiningen.javac plugin does not hook into
+;; test tasks as well as clean and compile
+
+(ns leiningen.hooks.javac
+  (:require leiningen.test)
+  (:use [clojure.contrib.io :only [file delete-file delete-file-recursively]]
+        [leiningen.javac :only (javac extract-javac-tasks)]
+        robert.hooke))
+
+(defn compile-java-before-running-tests-hook [task & args]
+  (println "About to compile Java sources")
+  (apply javac args)
+  (apply task args))
+
+(add-hook #'leiningen.test/test compile-java-before-running-tests-hook)
